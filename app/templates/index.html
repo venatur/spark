@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a PAYMENTS</title>
+</head>
+<body>
+    <div>
+        <form method="post" action="/">
+            <p>name:<input type="text" name="name_payment"></p>
+			<p>Import<input type="text" name="import_payment"></p>
+        	<input type="submit" value="Add">
+        </form>
+    </div>
+    <div>
+        <h6>
+			<p><h1>Payments</h1></p>
+		</h6>
+
+		<table>
+        {% for bill in bills %}
+			<tr>
+			<td><h1>{{bill.name_payment}}</h1></td>
+				<td><h1>{{bill.import_payment}}</h1></td>
+			</tr>
+			<td>
+			<form method="POST" action="./update">
+					<td>
+					<input type="hidden" value="{{bill.name_payment}}" name="oldimport1">
+					<input type="text" value="{{bill.name_payment}}" name="newimport1">
+					<input type="hidden" value="{{bill.import_payment}}" name="oldimport2">
+					<input type="text" value="{{bill.import_payment}}" name="newimport2">
+    				<input type="submit" value="Update">
+					</td>
+			</td>
+			</form>
+			<td>
+				<form method="POST" action="./delete">
+					<input type="hidden" value="{{bill.name_payment}}" name="name_payment">
+					<input type="submit" value="Delete">
+				</form>
+		{% endfor %}
+		</table>
+
+
+    </div>
+</body>
+</html>
